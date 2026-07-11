@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sala Marrom — achadinhos pra sua casa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Montserrat:wght@400;500;600;700&family=Raleway:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --brown-dark:#2B1B12;
+    --brown-mid:#4A3222;
+    --brown-line:#5c4028;
+    --cream:#FBF4E8;
+    --cream-dim:#EDE1CC;
+    --mustard:#E8A33D;
+    --coral:#FF6F5B;
+    --olive:#8B9459;
+    --font-display:'Poppins',sans-serif;
+    --font-body:'Montserrat',sans-serif;
+    --font-label:'Raleway',sans-serif;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  body{
+    background:var(--brown-dark);
+    color:var(--cream);
+    font-family:var(--font-body);
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+
+  a{color:inherit; text-decoration:none;}
+  button{font-family:inherit; cursor:pointer; border:none;}
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{
+    outline:3px solid var(--mustard);
+    outline-offset:3px;
+  }
+
+  .wrap{max-width:1080px; margin:0 auto; padding:0 24px;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:24px 0;
+  }
+  .logo{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:1.4rem;
+    letter-spacing:-0.02em;
+    display:flex; align-items:center; gap:8px;
+  }
+  .logo .dot{
+    width:10px; height:10px; border-radius:50%;
+    background:var(--coral);
+    display:inline-block;
+  }
+  .nav-cta{
+    background:var(--mustard);
+    color:var(--brown-dark);
+    font-family:var(--font-label);
+    font-weight:700;
+    font-size:0.82rem;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    padding:11px 20px;
+    border-radius:100px;
+    transition:transform .15s ease, background .15s ease;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{background:var(--coral); color:var(--cream); transform:translateY(-2px);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:56px 0 40px;
+    position:relative;
+  }
+  .eyebrow{
+    font-family:var(--font-label);
+    font-weight:700;
+    font-size:0.78rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--mustard);
+    margin-bottom:14px;
+    display:inline-block;
+  }
+  .hero h1{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:clamp(2.4rem, 6vw, 4.2rem);
+    line-height:1.02;
+    letter-spacing:-0.02em;
+    max-width:12ch;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--coral);
+    position:relative;
+  }
+  .hero p{
+    font-size:1.05rem;
+    color:var(--cream-dim);
+    max-width:44ch;
+    margin-top:20px;
+  }
+
+  /* shelf illustration */
+  .shelf-scene{
+    margin-top:56px;
+    position:relative;
+    height:200px;
+  }
+  .shelf-board{
+    position:absolute;
+    bottom:38px; left:0; right:0;
+    height:16px;
+    background:repeating-linear-gradient(90deg, var(--brown-mid) 0 22px, var(--brown-line) 22px 24px);
+    border-radius:3px;
+    box-shadow:0 10px 24px rgba(0,0,0,.35);
+  }
+  .shelf-board::after{
+    content:'';
+    position:absolute; left:0; right:0; bottom:-10px; height:10px;
+    background:linear-gradient(180deg, rgba(0,0,0,.25), transparent);
+  }
+  .floaty{
+    position:absolute; bottom:54px;
+    font-size:2.6rem;
+    filter:drop-shadow(0 12px 14px rgba(0,0,0,.4));
+    animation:bob 4.5s ease-in-out infinite;
+  }
+  .floaty.f1{left:6%; animation-delay:0s;}
+  .floaty.f2{left:24%; font-size:2.1rem; animation-delay:.6s;}
+  .floaty.f3{left:44%; font-size:3rem; animation-delay:1.1s;}
+  .floaty.f4{left:64%; font-size:2.2rem; animation-delay:.3s;}
+  .floaty.f5{left:83%; font-size:2.5rem; animation-delay:.9s;}
+  @keyframes bob{
+    0%,100%{transform:translateY(0) rotate(-3deg);}
+    50%{transform:translateY(-10px) rotate(3deg);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .floaty{animation:none;}
+  }
+
+  /* ---------- PRODUCTS ---------- */
+  .catalog{
+    padding:64px 0 40px;
+    background:
+      linear-gradient(180deg, transparent 0, var(--brown-mid) 90px, var(--brown-mid) 100%);
+    border-top:2px solid var(--brown-line);
+    position:relative;
+  }
+  .catalog-head{
+    display:flex; align-items:flex-end; justify-content:space-between; gap:20px; flex-wrap:wrap;
+    margin-bottom:40px;
+  }
+  .catalog-head h2{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:clamp(1.7rem, 3.4vw, 2.3rem);
+  }
+  .catalog-head .count{
+    font-family:var(--font-label);
+    font-size:0.85rem;
+    color:var(--cream-dim);
+    letter-spacing:.03em;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+    gap:28px;
+  }
+
+  .card{
+    background:var(--cream);
+    color:var(--brown-dark);
+    border-radius:18px;
+    padding:26px 22px 22px;
+    position:relative;
+    transform:rotate(var(--tilt, -1.5deg));
+    transition:transform .25s ease, box-shadow .25s ease;
+    box-shadow:0 14px 26px rgba(0,0,0,.28);
+  }
+  .card:nth-child(2){--tilt:1.4deg;}
+  .card:nth-child(3){--tilt:-0.8deg;}
+  .card:nth-child(4){--tilt:1.8deg;}
+  .card:hover{transform:rotate(0deg) translateY(-6px); box-shadow:0 20px 34px rgba(0,0,0,.35);}
+
+  .tape{
+    position:absolute; top:-10px; left:50%; transform:translateX(-50%) rotate(-3deg);
+    width:70px; height:22px;
+    background:var(--mustard);
+    opacity:.9;
+    border-radius:2px;
+  }
+
+  .card-icon{
+    width:64px; height:64px;
+    border-radius:14px;
+    background:var(--brown-dark);
+    display:flex; align-items:center; justify-content:center;
+    font-size:2rem;
+    margin-bottom:16px;
+  }
+  .card .tag{
+    display:inline-block;
+    font-family:var(--font-label);
+    font-weight:700;
+    font-size:0.68rem;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    color:var(--olive);
+    background:rgba(139,148,89,.14);
+    padding:4px 10px;
+    border-radius:100px;
+    margin-bottom:10px;
+    margin-right:6px;
+  }
+  .card .tag.condition-new{
+    color:#2f6b4f;
+    background:rgba(47,107,79,.12);
+  }
+  .card .tag.condition-used{
+    color:#a3671a;
+    background:rgba(232,163,61,.18);
+  }
+  .card h3{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:1.15rem;
+    margin-bottom:6px;
+    line-height:1.2;
+  }
+  .card .desc{
+    font-size:0.88rem;
+    color:#5c4a38;
+    margin-bottom:16px;
+  }
+  .card .price-row{
+    display:flex; align-items:center; justify-content:space-between;
+    margin-bottom:16px;
+  }
+  .card .price{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:1.5rem;
+    color:var(--coral);
+  }
+  .card .price small{
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:0.7rem;
+    color:#8a7864;
+  }
+  .buy-btn{
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    width:100%;
+    background:var(--brown-dark);
+    color:var(--cream);
+    font-family:var(--font-label);
+    font-weight:700;
+    font-size:0.82rem;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    padding:13px 16px;
+    border-radius:12px;
+    transition:background .15s ease, transform .15s ease;
+  }
+  .buy-btn:hover{background:var(--olive); transform:scale(1.02);}
+  .buy-btn svg{width:16px; height:16px; flex-shrink:0;}
+
+  /* soon card */
+  .card.soon{
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center;
+    background:transparent;
+    border:2px dashed var(--brown-line);
+    color:var(--cream-dim);
+    box-shadow:none;
+  }
+  .card.soon:hover{transform:rotate(0deg);}
+  .card.soon .card-icon{background:transparent; border:2px dashed var(--brown-line); font-size:1.8rem;}
+  .card.soon h3{color:var(--cream);}
+
+  /* ---------- DESAPEGO ---------- */
+  .desapego{
+    padding:56px 0;
+    background:var(--brown-dark);
+    position:relative;
+  }
+  .desapego-box{
+    background:var(--olive);
+    color:var(--brown-dark);
+    border-radius:22px;
+    padding:40px clamp(24px, 5vw, 56px);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:32px;
+    flex-wrap:wrap;
+  }
+  .desapego-box .txt{max-width:32ch;}
+  .desapego-box .eyebrow{color:var(--brown-dark); opacity:.7;}
+  .desapego-box h2{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:clamp(1.5rem, 3.2vw, 2rem);
+    line-height:1.15;
+    margin-bottom:10px;
+  }
+  .desapego-box p{font-size:0.92rem; opacity:.85;}
+  .desapego-cta{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--brown-dark);
+    color:var(--cream);
+    font-family:var(--font-label);
+    font-weight:700;
+    font-size:0.85rem;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    padding:15px 26px;
+    border-radius:100px;
+    white-space:nowrap;
+    transition:transform .15s ease, background .15s ease;
+    flex-shrink:0;
+  }
+  .desapego-cta:hover{background:var(--coral); color:var(--brown-dark); transform:translateY(-3px);}
+  .desapego-cta svg{width:17px; height:17px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:56px 0 40px;
+    text-align:center;
+  }
+  footer .eyebrow{margin-bottom:10px;}
+  footer h2{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:clamp(1.6rem, 3.6vw, 2.2rem);
+    max-width:20ch;
+    margin:0 auto 22px;
+  }
+  .footer-cta{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--coral);
+    color:var(--brown-dark);
+    font-family:var(--font-label);
+    font-weight:700;
+    font-size:0.9rem;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    padding:16px 30px;
+    border-radius:100px;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .footer-cta:hover{background:var(--mustard); transform:translateY(-3px);}
+  .footer-cta svg{width:18px; height:18px;}
+  .fine-print{
+    margin-top:30px;
+    font-size:0.78rem;
+    color:#8a7864;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <div class="logo"><span class="dot"></span>sala marrom</div>
+    <a class="nav-cta" href="https://wa.me/5511934121551?text=Oi!%20Vim%20pela%20loja%20e%20quero%20saber%20mais%20%F0%9F%A4%8E" target="_blank" rel="noopener">Falar no zap</a>
+  </nav>
+
+  <section class="hero">
+    <span class="eyebrow">achadinhos de verdade</span>
+    <h1>Produtos <em>rotineiros</em> da vida real.</h1>
+    <p>Fone, caixinha de som, trecos pra cozinha — as coisas que você realmente usa no dia a dia, novas ou usadas com carinho. Sem enrolação: escolhe, chama no zap e é seu.</p>
+
+    <div class="shelf-scene" aria-hidden="true">
+      <span class="floaty f1">🎧</span>
+      <span class="floaty f2">🔌</span>
+      <span class="floaty f3">🔊</span>
+      <span class="floaty f4">💡</span>
+      <span class="floaty f5">☕</span>
+      <div class="shelf-board"></div>
+    </div>
+  </section>
+</div>
+
+<section class="catalog">
+  <div class="wrap">
+    <div class="catalog-head">
+      <h2>O que tem na sala hoje</h2>
+      <span class="count">novo e usado, sempre com preço justo</span>
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="tape"></div>
+        <div class="card-icon">🎧</div>
+        <span class="tag condition-new">Novo</span>
+        <span class="tag">Eletrônicos</span>
+        <h3>Fone i7s Upgraded</h3>
+        <p class="desc">Bluetooth, sem fio, leve e confortável — ótimo pra ouvir música ou atender chamada sem enrolar cabo.</p>
+        <div class="price-row">
+          <span class="price">R$ 49,90<br><small>à vista</small></span>
+        </div>
+        <a class="buy-btn" href="https://wa.me/5511934121551?text=Oi!%20Quero%20o%20Fone%20i7s%20Upgraded%20por%20R%2449%2C90%20%F0%9F%8E%A7" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A8.9 8.9 0 0 0 3.7 17l-1.2 4.4 4.5-1.2A8.9 8.9 0 1 0 17.6 6.3ZM12 19.5a7.4 7.4 0 0 1-3.8-1l-.3-.2-2.7.7.7-2.6-.2-.3a7.5 7.5 0 1 1 6.3 3.4Zm4.1-5.6c-.2-.1-1.3-.7-1.6-.7s-.4-.1-.6.1-.6.7-.8.9-.3.2-.6.1a6.1 6.1 0 0 1-1.8-1.1 6.7 6.7 0 0 1-1.2-1.6c-.1-.2 0-.4.1-.5l.4-.4a1.6 1.6 0 0 0 .2-.4.4.4 0 0 0 0-.4c-.1-.1-.6-1.4-.8-1.9s-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.6 1 2.8s1.8 2.8 4.4 3.9a5 5 0 0 0 3.1.6 2.6 2.6 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .1-1.2c-.1-.1-.2-.2-.5-.3Z"/></svg>
+          Comprar no zap
+        </a>
+      </div>
+
+      <div class="card">
+        <div class="tape"></div>
+        <div class="card-icon">🔊</div>
+        <span class="tag condition-new">Novo</span>
+        <span class="tag">Eletrônicos</span>
+        <h3>Caixinha AL-06 à Prova d'Água</h3>
+        <p class="desc">Som bom, resistente a respingo e chuva fraca — perfeita pra banho, piscina ou cozinha enquanto rola o café.</p>
+        <div class="price-row">
+          <span class="price">R$ 64,90<br><small>à vista</small></span>
+        </div>
+        <a class="buy-btn" href="https://wa.me/5511934121551?text=Oi!%20Quero%20a%20Caixinha%20AL-06%20por%20R%2464%2C90%20%F0%9F%94%8A" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A8.9 8.9 0 0 0 3.7 17l-1.2 4.4 4.5-1.2A8.9 8.9 0 1 0 17.6 6.3ZM12 19.5a7.4 7.4 0 0 1-3.8-1l-.3-.2-2.7.7.7-2.6-.2-.3a7.5 7.5 0 1 1 6.3 3.4Zm4.1-5.6c-.2-.1-1.3-.7-1.6-.7s-.4-.1-.6.1-.6.7-.8.9-.3.2-.6.1a6.1 6.1 0 0 1-1.8-1.1 6.7 6.7 0 0 1-1.2-1.6c-.1-.2 0-.4.1-.5l.4-.4a1.6 1.6 0 0 0 .2-.4.4.4 0 0 0 0-.4c-.1-.1-.6-1.4-.8-1.9s-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.6 1 2.8s1.8 2.8 4.4 3.9a5 5 0 0 0 3.1.6 2.6 2.6 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .1-1.2c-.1-.1-.2-.2-.5-.3Z"/></svg>
+          Comprar no zap
+        </a>
+      </div>
+
+      <div class="card">
+        <div class="tape"></div>
+        <div class="card-icon">🍳</div>
+        <span class="tag condition-used">Usado - bom estado</span>
+        <span class="tag">Casa</span>
+        <h3>Exemplo: item de desapego</h3>
+        <p class="desc">Assim que você mandar seus desapegos, os itens usados aparecem aqui com foto real, estado de conservação e preço justo.</p>
+        <div class="price-row">
+          <span class="price">R$ --,--<br><small>a definir</small></span>
+        </div>
+        <a class="buy-btn" href="https://wa.me/5511934121551?text=Oi!%20Quero%20saber%20mais%20sobre%20os%20itens%20de%20desapego%20da%20loja%20%E2%9C%A8" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A8.9 8.9 0 0 0 3.7 17l-1.2 4.4 4.5-1.2A8.9 8.9 0 1 0 17.6 6.3ZM12 19.5a7.4 7.4 0 0 1-3.8-1l-.3-.2-2.7.7.7-2.6-.2-.3a7.5 7.5 0 1 1 6.3 3.4Zm4.1-5.6c-.2-.1-1.3-.7-1.6-.7s-.4-.1-.6.1-.6.7-.8.9-.3.2-.6.1a6.1 6.1 0 0 1-1.8-1.1 6.7 6.7 0 0 1-1.2-1.6c-.1-.2 0-.4.1-.5l.4-.4a1.6 1.6 0 0 0 .2-.4.4.4 0 0 0 0-.4c-.1-.1-.6-1.4-.8-1.9s-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.6 1 2.8s1.8 2.8 4.4 3.9a5 5 0 0 0 3.1.6 2.6 2.6 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .1-1.2c-.1-.1-.2-.2-.5-.3Z"/></svg>
+          Perguntar no zap
+        </a>
+      </div>
+
+      <div class="card soon">
+        <div class="card-icon">✨</div>
+        <h3>Mais coisas chegando</h3>
+        <p class="desc" style="color:#a8988a;">Toda semana um achadinho novo entra na sala. Chama no zap pra saber em primeira mão.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="desapego">
+  <div class="wrap">
+    <div class="desapego-box">
+      <div class="txt">
+        <span class="eyebrow">tem coisa parada aí em casa?</span>
+        <h2>Faz desapego pra gente e ainda ganha uma grana</h2>
+        <p>Eletrônico, item de casa, o que for — manda foto no zap, a gente avalia e fecha um preço justo. Rápido e sem burocracia.</p>
+      </div>
+      <a class="desapego-cta" href="https://wa.me/5511934121551?text=Oi!%20Quero%20fazer%20um%20desapego%20pra%20Sala%20Marrom%20%F0%9F%93%A6" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A8.9 8.9 0 0 0 3.7 17l-1.2 4.4 4.5-1.2A8.9 8.9 0 1 0 17.6 6.3ZM12 19.5a7.4 7.4 0 0 1-3.8-1l-.3-.2-2.7.7.7-2.6-.2-.3a7.5 7.5 0 1 1 6.3 3.4Z"/></svg>
+        Quero desapegar
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="eyebrow">bora fechar negócio?</span>
+    <h2>Escolheu, chama no zap. Simples assim.</h2>
+    <a class="footer-cta" href="https://wa.me/5511934121551?text=Oi!%20Vim%20pela%20loja%20Sala%20Marrom%20%F0%9F%A4%8E" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A8.9 8.9 0 0 0 3.7 17l-1.2 4.4 4.5-1.2A8.9 8.9 0 1 0 17.6 6.3ZM12 19.5a7.4 7.4 0 0 1-3.8-1l-.3-.2-2.7.7.7-2.6-.2-.3a7.5 7.5 0 1 1 6.3 3.4Z"/></svg>
+      Chamar no WhatsApp
+    </a>
+    <p class="fine-print">sala marrom — achadinhos com carinho · (11) 93412-1551</p>
+  </div>
+</footer>
+
+</body>
+</html>
